@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class JeuBilles : MonoBehaviour
 {
-    
+    [SerializeReference] private GameObject _bille;
     [SerializeReference] private GameObject _plateforme;
     [SerializeReference] private GameObject _cible1;
     // Start is called before the first frame update
