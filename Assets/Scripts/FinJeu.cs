@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -12,23 +13,23 @@ public class FinJeu : MonoBehaviour
     [SerializeReference] private GameObject _bille;
 
     float _time = 0f;
+
+    bool _jeuFini = false;
     
-    /// <summary>
-    /// OnTriggerEnter is called when the Collider other enters the trigger.
-    /// </summary>
-    /// <param name="other">The other Collider involved in this collision.</param>
-    void OnTriggerEnter(Collider _terminus)
+    void Update() 
     {
-        Debug.Log("I'm In!");
-        for(int i = 0; i<6; i++)
+        if(_jeuFini == true)
         {
-            _time += Time.deltaTime*4;
-            print(_time);
-            if(_time == 5)
+            _time += Time.deltaTime;
+            if(_time >= 5f)
             {
                 Redemarrer();
             }
         }
+    }
+    void OnTriggerEnter(Collider _terminus)
+    {
+        _jeuFini = true;
     }
 
     void Redemarrer()
